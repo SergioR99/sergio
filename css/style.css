@@ -87,6 +87,7 @@
 body{
     background: #f0f0f0;
     text-align: center;
+    overflow: hidden;
 }
 
 .content-web{
@@ -94,6 +95,7 @@ body{
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 4rem;
+    overflow: hidden;
 }
 
 header{
@@ -116,6 +118,7 @@ header nav ul{
 
 header nav ul li{
     display: inline-flex;
+    position: relative;
 }
 
 header nav ul li a{
@@ -149,6 +152,85 @@ header nav ul li:nth-child(4) a::before{
     content: '04 ';
 }
 
+header nav ul li a:hover{
+    cursor: pointer;
+}
+
+header nav ul li::before, header nav ul li::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    animation: 0 none;
+    color: #468189;
+}
+
+header nav ul li::before {
+    top: 0;
+    left:0;
+    border-top: 2px solid;
+    border-right: 2px solid;
+  }
+
+header nav ul li::after {
+    bottom: 0px;
+    right:0;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+}
+
+header nav ul li:hover::before{
+  animation: .7s antes linear forwards;
+}
+header nav ul li:hover::after {
+  animation: .7s despues linear forwards .7s;
+}
+
+@keyframes antes {
+    0% {
+      opacity: 1;
+      top: -2px;
+      left: 0;
+      width:0;
+      width: 0;
+    }
+    80% {
+      top: -2px;
+      left: 0;
+      width: 100%;
+      height: 0;
+    }
+    100% {
+      top: -2px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+}
+  
+@keyframes despues {
+    0% {
+      opacity: 1;
+      bottom: 0;
+      right: 0;
+      height: 0;
+      width: 0;
+    }
+    80% {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 0;
+    }
+    100% {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+}
+
 #contacto-header{
     font-family: 'Roboto';
     color: #031926;
@@ -159,6 +241,34 @@ header nav ul li:nth-child(4) a::before{
     font-weight: 500;
     letter-spacing: 1px;
     border: 2px solid #468189;
+    position: relative;
+    overflow: hidden;
+}
+
+#contacto-header::after{
+    content: '';
+    background: #468189;
+    position: absolute;
+    top: -170px;
+    left: -226px;
+    width: 160px;
+    height: 126px;
+    transform: rotate(45deg);
+    transition: 1s ease all;
+    -webkit-transition: 1s ease all;
+    -moz-transition: 1s ease all;
+    -ms-transition: 1s ease all;
+    -o-transition: 1s ease all;
+    z-index: -1;
+}
+
+#contacto-header:hover{
+    color: #ffffff;
+}
+
+#contacto-header:hover::after{
+    top: -63px;
+    left: -40px;
 }
 
 .redes{
@@ -215,6 +325,13 @@ header nav ul li:nth-child(4) a::before{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sobre-mi.loaded {
+    opacity: 1; /* Hacemos visible cuando tiene la clase "loaded" */
+    transform: translateY(0); /* Eliminamos el desplazamiento hacia abajo */
 }
 
 .sobre-mi div{
@@ -223,7 +340,18 @@ header nav ul li:nth-child(4) a::before{
 }
 
 .sobre-mi img{
+    background: url(../images/blob.svg) no-repeat;
+    background-position: 0;
+    background-size: 100%;
     width: 23rem;
+    opacity: 0;
+    transform: translateX(550px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.sobre-mi.loaded img {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .sobre-mi div h1{
@@ -231,6 +359,8 @@ header nav ul li:nth-child(4) a::before{
     color: #031926;
     font-size: 3rem;
     font-weight: 700;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .sobre-mi div h2{
@@ -238,18 +368,36 @@ header nav ul li:nth-child(4) a::before{
     font-family: 'Inconsolata';
     font-weight: 500;
     margin: 0.5rem 0 2rem;
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .sobre-mi div p{
     font-size: 1rem;
     font-family: 'Roboto';
     line-height: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sobre-mi.loaded h1, .sobre-mi.loaded h2, .sobre-mi.loaded p {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .conocimientos-content{
     width: 88%;
     margin: 0 auto;
     padding: 0 0 9rem;
+    transform: translateY(100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.conocimientos-content.loaded {
+    opacity: 1; 
+    transform: translateY(0); 
 }
 
 .conocimientos-content h2{
@@ -288,7 +436,7 @@ header nav ul li:nth-child(4) a::before{
     padding: 1.5rem 2rem;
     border-radius: 1rem;
     background: #ffffff;
-    box-shadow: 20px 20px 60px #cccccc, -20px -20px 60px #ffffff;
+    box-shadow: 0px 0 30px rgb(204 204 204 / 10%);
     transition: 1s ease;
 }
 
@@ -312,6 +460,13 @@ header nav ul li:nth-child(4) a::before{
     width: 88%;
     margin: 0 auto;
     padding: 0 0 9rem;
+    transform: translateY(200px);
+    transition: opacity 1.5s ease, transform 1s ease;
+}
+
+.experiencia-content.loaded {
+    opacity: 1; 
+    transform: translateY(0); 
 }
 
 .experiencia-content > h2{
