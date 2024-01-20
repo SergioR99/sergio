@@ -1,4 +1,87 @@
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 450px) {
+    .content-web{ padding: 0 1rem; }
+
+    header{ width: 100%; }
+
+    header nav{ display: none; }
+
+    .sobre-mi{ 
+        display: block; 
+        margin: 2rem auto;
+        width: 80%;
+    }
+
+    .sobre-mi div{
+        width: 100%;
+    }
+
+    .sobre-mi div h1{
+        font-size: 2rem;
+    }
+
+    .sobre-mi div h2{
+        font-size: 1rem;
+    }
+
+    .sobre-mi div p{
+        font-size: 0.9rem;
+    }
+
+    .sobre-mi img{
+        width: 100%;
+    }
+
+    .conocimientos-content{
+        width: 80%;
+        padding: 0 0 5rem;
+    }
+
+    .conocimientos-content ul {
+        justify-content: flex-start;
+    }
+
+    .conocimientos-content ul li {
+        width: 44%;
+        margin: 0 0.5rem 1rem;
+    }
+
+    .experiencia-content{
+        width: 80%;
+    }
+
+    .experiencia-content > div { display: block; }
+
+    .experiencia-content ul {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #468189;
+    }
+
+    .experiencia-content ul li {
+        border-right: 2px solid #468189;
+        border-bottom: 0;
+    }
+
+    .experiencia-content ul li:last-child {
+        border-right: 0px solid #468189;
+    }
+
+    .experiencia-content article {
+        border-left: 0px ;
+    }
+
+    .experiencia-content article div {
+        padding: 2rem 1rem;
+    }
+
+    .redes{ width: 90%;}
+
+    .conocimientos-content h2, .experiencia-content h2{
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 455px) and (max-width: 768px) {
     .content-web{ padding: 0 1rem; }
 
     header{ width: 100%; }
