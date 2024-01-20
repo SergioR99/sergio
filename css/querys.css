@@ -1,0 +1,44 @@
+@media only screen and (max-width: 768px) {
+    .content-web{ padding: 0 1rem; }
+
+    header{ width: 100%; }
+
+    header nav{ display: none; }
+
+    .sobre-mi{ 
+        display: block; 
+        margin: 2rem auto;
+    }
+
+    .conocimientos-content ul {
+        justify-content: flex-start;
+    }
+
+    .conocimientos-content ul li {
+        width: 9rem;
+        margin: 0 0.5rem 2rem;
+    }
+
+    .experiencia-content > div { display: block; }
+
+    .experiencia-content ul {
+        width: 100%;
+        display: flex;
+        border-bottom: 2px solid #468189;
+    }
+
+    .experiencia-content ul li {
+        border-right: 2px solid #468189;
+        border-bottom: 0;
+    }
+
+    .experiencia-content ul li:last-child {
+        border-right: 0px solid #468189;
+    }
+
+    .experiencia-content article {
+        border-left: 0px ;
+    }
+
+    .redes{ width: 95%;}
+}
